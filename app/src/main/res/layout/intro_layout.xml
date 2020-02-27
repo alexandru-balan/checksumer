@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/intro_hashing"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_hashing"
+        android:background="@color/colorAccent"
+        android:contentDescription="@string/acc_hashing">
+
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/intro_continue"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/intro_welcome_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:text="@string/intro_title"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:fontFamily="@font/ubuntu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="40sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/intro_welcome_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/intro_text"
+            android:textAlignment="center"
+            android:layout_gravity="top"
+            android:fontFamily="@font/ubuntu"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp">
+
+        </TextView>
+
+        <fragment
+            android:name="alexandru.balan.checksumer.StartHashFragment"
+            android:id="@+id/intro_startActivity_Hash"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            tools:layout="@layout/start_hash_fragment_layout">
+
+        </fragment>
+
+    </LinearLayout>
+
+</LinearLayout>
