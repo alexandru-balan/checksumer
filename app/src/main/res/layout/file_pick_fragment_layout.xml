@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/file_pick_fragment_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:hint="@string/file_choose_text_placeholder"
+        android:fontFamily="@font/ubuntu"
+        android:autoSizeMaxTextSize="22sp"
+        android:autoSizeMinTextSize="20sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center"
+        android:background="">
+
+    </TextView>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="15dp"
+        android:textSize="18sp"
+        android:text="@string/file_choose_button"
+        android:fontFamily="@font/ubuntu"
+        android:textColor="@color/colorPrimary"
+        android:clickable="true"
+        android:elevation="25dp"
+        android:background="@drawable/ripple"
+        android:onClick="ChooseFile"
+        android:gravity="center">
+
+    </Button>
+
+
+</LinearLayout>

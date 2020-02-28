@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">Checksumer</string>
 
-    <!--Intro string-->
+    <!-- Intro strings -->
     <string name="intro_title">Welcome To Checksumer</string>
     <string name="intro_text">The app that juices your files into edible checksums</string>
     <string name="intro_startHash">Let\'s hash</string>
 
-    <!--Accessibility strings-->
-    <string name="acc_hashing">Circuit illustration</string>
+    <!-- FilePickFragment strings -->
+    <string name="file_choose_text_placeholder">Choose a file&#8230;</string>
+    <string name="file_choose_button">Choose</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Accessibility strings -->
+    <string name="acc_hashing">Circuit illustration</string>
 </resources>
