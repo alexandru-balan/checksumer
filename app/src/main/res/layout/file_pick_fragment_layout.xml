@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     android:layout_weight="1"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:id="@+id/file_pick_fragment_layout">
 
     <TextView
         android:id="@+id/file_pick_fragment_text"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="75dp"
         android:layout_weight="2"
         android:hint="@string/file_choose_text_placeholder"
         android:fontFamily="@font/ubuntu"
@@ -18,24 +19,24 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:gravity="center"
-        android:background="">
+        android:background="@drawable/textbox_border">
 
     </TextView>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_weight="1"
-        android:layout_marginStart="15dp"
-        android:textSize="18sp"
-        android:text="@string/file_choose_button"
-        android:fontFamily="@font/ubuntu"
-        android:textColor="@color/colorPrimary"
+        android:background="@drawable/ripple"
         android:clickable="true"
         android:elevation="25dp"
-        android:background="@drawable/ripple"
+        android:fontFamily="@font/ubuntu"
+        android:gravity="center"
         android:onClick="ChooseFile"
-        android:gravity="center">
+        android:text="@string/file_choose_button"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp">
 
     </Button>
 

@@ -7,9 +7,15 @@
     <string name="intro_startHash">Let\'s hash</string>
 
     <!-- FilePickFragment strings -->
-    <string name="file_choose_text_placeholder">Choose a file&#8230;</string>
+    <string name="file_choose_text_placeholder">Empty&#8230;</string>
     <string name="file_choose_button">Choose</string>
 
+    <!-- AlgoHashFragment strings -->
+    <string name="algohash_hash_button">Hash!</string>
+    <string name="algohash_close_fragment">Close first fragment</string>
+    <string name="algohash_close_activity">Close activity</string>
+    <string name="algohash_open_file_chooser">Open file picker</string>
+    
     <!-- Accessibility strings -->
     <string name="acc_hashing">Circuit illustration</string>
 </resources>

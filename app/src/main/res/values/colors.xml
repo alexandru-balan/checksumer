@@ -6,4 +6,8 @@
     <color name="colorAccentLight">#00EDE1</color>
     <color name="colorNeutral">#B0AB99</color>
     <color name="colorToolbar">#01948B</color>
+    <color name="colorOpen">#00A5C4</color>
+    <color name="colorClose">#BD5A42</color>
+    <color name="colorOpenDarker">#006D7F</color>
+    <color name="colorCloseDarker">#924333</color>
 </resources>

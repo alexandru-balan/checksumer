@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:layout_margin="5dp"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:text="@string/algohash_hash_button"
+            android:autoSizeMaxTextSize="20sp"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/ripple"
+            android:textColor="@color/colorPrimary"
+            android:onClick="HashFile">
+
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:text="@string/algohash_close_fragment"
+            android:autoSizeMaxTextSize="20sp"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/ripple_close"
+            android:textColor="@color/colorPrimary"
+            android:onClick="DeleteFirstFragment">
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:text="@string/algohash_close_activity"
+            android:autoSizeMaxTextSize="20sp"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/ripple_close"
+            android:textColor="@color/colorPrimary"
+            android:onClick="CloseActivity">
+
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            android:text="@string/algohash_open_file_chooser"
+            android:autoSizeMaxTextSize="20sp"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/ripple_open"
+            android:textColor="@color/colorPrimary"
+            android:onClick="OpenFirstFragment">
+
+        </Button>
+
+    </LinearLayout>
 
 </LinearLayout>
