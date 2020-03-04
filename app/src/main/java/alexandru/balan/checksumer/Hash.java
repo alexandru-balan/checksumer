@@ -1,7 +1,6 @@
 package alexandru.balan.checksumer;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -13,10 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
@@ -28,8 +27,6 @@ public class Hash extends AppCompatActivity {
     public static final int PERMISSION_READ_EXTERNAL = 1;
 
     private Uri fileUri;
-    private String filePath;
-    private File file;
     private FilePickFragment filePickFragment;
 
     @Override
@@ -47,11 +44,11 @@ public class Hash extends AppCompatActivity {
         /*Creating the first fragment*/
 
         filePickFragment = new FilePickFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, filePickFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, filePickFragment, "picker").commit();
 
         /*Creating the second fragment*/
         AlgoHashFragment algoHashFragment = new AlgoHashFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, algoHashFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, algoHashFragment, "controls").commit();
     }
 
     public void ChooseFile(View view) {
@@ -62,23 +59,28 @@ public class Hash extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult (int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case pick_result_code:
-                if (resultCode == -1) {
-                    fileUri = data.getData();
+    public void onActivityResult (int requestCode, int resultCode, Intent data) throws NullPointerException {
+        if (requestCode == pick_result_code) {
+            if (resultCode == -1) {
+                fileUri = data.getData();
 
-                    file = new File(fileUri.getPath());
-                    filePath = fileUri.getPath().replace("%3A", ":").replace("%2F", "/");
-
-                    TextView tv = findViewById(R.id.file_pick_fragment_text);
-                    tv.setText(filePath);
+                try {
+                    File file = new File(fileUri.getPath());
                 }
-                break;
+                catch (NullPointerException npe) {
+                    System.out.println("No file selected");
+                    return;
+                }
+
+                String filePath = fileUri.getPath().replace("%3A", ":").replace("%2F", "/");
+
+                TextView tv = findViewById(R.id.file_pick_fragment_text);
+                tv.setText(filePath);
+            }
         }
     }
 
-    public void HashFile (View view) throws IOException, NoSuchAlgorithmException {
+    public void HashFile (View view) throws IOException, NoSuchAlgorithmException, NullPointerException {
         InputStream fileInputStream = getContentResolver().openInputStream(fileUri);
 
         byte[] bytes = new byte[2048];
@@ -101,27 +103,37 @@ public class Hash extends AppCompatActivity {
         }
 
         /*Replacing the first fragment with the third one*/
-        FinalHashFragment finalHashFragment = new FinalHashFragment();
-        Bundle args = new Bundle();
-        args.putString("hashValue", stringBuilder.toString());
-        finalHashFragment.setArguments(args);
+        if (filePickFragment.isVisible()) {
+            FinalHashFragment finalHashFragment = new FinalHashFragment();
+            Bundle args = new Bundle();
+            args.putString("hashValue", stringBuilder.toString());
+            finalHashFragment.setArguments(args);
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.file_pick_fragment_layout, finalHashFragment);
-        transaction.commit();
+            transaction.replace(R.id.file_pick_fragment_layout, finalHashFragment, "hash");
+            transaction.commit();
+        }
     }
 
     public void DeleteFirstFragment (View view) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.remove(filePickFragment);
-        transaction.commit();
+        Fragment ff = getSupportFragmentManager().findFragmentByTag("picker");
+
+        if (ff != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.remove(filePickFragment);
+            transaction.commit();
+        }
     }
 
     public void OpenFirstFragment (View view) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_container, filePickFragment);
-        transaction.commit();
+        Fragment ff = getSupportFragmentManager().findFragmentByTag("picker");
+
+        if (ff == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.fragment_container, filePickFragment, "picker");
+            transaction.commit();
+        }
     }
 
     public void CloseActivity(View view) {
